@@ -13,12 +13,11 @@ hp_filter = 1;              % Enable high-pass filter
 
 h = rir_generator(c, fs, r, s, L, beta, n, mtype, order, dim, orientation, hp_filter);
 
-mic_to_plot = 1
-
 figure;
-plot([0:n-1], h(mic_to_plot,1:n), 'b')
-xlim([0 (n-1)]);
+subplot(211);
+plot([0:n-1]/fs, h(mic_to_plot,1:n), 'g')
+xlim([0 (n-1)/fs]);
 title(['Room impulse response at microphone ', num2str(mic_to_plot)]);
-xlabel('Time (sample)');
+xlabel('Time (s)');
 ylabel('Amplitude');
 legend('RIR generator');
